@@ -3,7 +3,10 @@ import {ImLocation} from 'react-icons/im';
 import {BiLink} from 'react-icons/bi';
 import {FaTwitter, FaRegBuilding}from 'react-icons/fa'
 const Card = ({data}) => {
-    const {name, login, avatar_url: url, bio, followers, following, public_repos: repos, location, blog,twitter_username, company} = data;
+    const {name, login, avatar_url: url, bio, followers, following, public_repos: repos, location, blog,twitter_username, company, created_at} = data;
+
+    const date = new Date(created_at);
+     let formattedDate = date.toLocaleDateString("en-US", { day: "numeric", month: "short", year: "numeric" }).replace(",","");
   return (
     <div className='flex flex-col justify-start p-6 w-10/12 md:w-1/2 my-5 mx-auto bg-white dark:bg-[#1F2B47] rounded-xl'>
         <div className="nameContainer flex justify-evenly items-center ">
@@ -13,18 +16,18 @@ const Card = ({data}) => {
             <div className='right'>
             <h1 className='font-semibold text-xl tracking-wide'>{name}</h1>
             <p className='text-blue-500 tracking-wide'>@{login}</p>
-            <p className=''>Joined 25 Jan 2011</p>
+            <p className=''>{`Joined ${formattedDate}`}</p>
             </div>
         </div>
         <p className=' my-5 mx-2 text-[#636A7E] font-semibold'>{bio}</p>
-        <div className="data flex items-start justify-between 
-        dark:bg-[#151C2F] rounded-lg p-6 bg-[#F7F8FE]
-        w-11/12">
-            <div className="repos">
+        <div className="data flex items-center justify-around 
+        dark:bg-[#151C2F] rounded-lg p-6 bg-[#F7F8FE] shadow-sm w-11/12 md:w-1/2 mx-auto
+        ">
+            <div className="repos  mr-1.5">
                 <p>Repos</p>
                 <p className='font-bold text-center'>{repos}</p>
             </div>
-            <div className="followers">
+            <div className="followers mr-1.5">
                 <p>Followers</p>
                 <p className='font-bold text-center'>{followers}</p>
             </div>
