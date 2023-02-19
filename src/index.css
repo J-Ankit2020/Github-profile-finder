@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 #root {
-  @apply dark:bg-[#151C2E] bg-[#F7F8FE] dark:text-white font-normal font-mono;
+  @apply dark:bg-[#151C2E] bg-lightPrimary dark:text-white font-normal font-mono;
 }
